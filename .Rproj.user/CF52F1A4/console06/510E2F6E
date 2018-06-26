@@ -8,4 +8,701 @@ $[0K[3G[?25h[?25l$ stat_xplore_key = "65794a30655841694f694a4b563151694c434
 bash: stat_xplore_key: command not found[0K
 [0K[?25h[?25l
 [0;32mDWP Hive 13@DWPHive13-HP [0;35m [0;33m~/Documents/Population data[0m[0K
-$[0K[3G[?25h
+]0;:/c/Users/DWP Hive 13/Documents/Populationdata[?25l
+[0;32mDWP Hive 13@DWPHive13-HP [0;35m [0;33m~/Documents/Populationdata[0;36m (master)[0m[0K
+$[0K[3G[?25h[?25l$ m[0K[?25hv[0K[6G[5G[?25l$ m[0K[?25h[?25l$[0K[3G[?25h[?25l$ if [ $# -eq 0 ]; then   echo "Start interactive shell";   exec "$BASH" --login -i; else   echo "Start shell with command";   exec "$BASH"[0K
+ -c "$*"; fi[0K[?25h[?25l[1A$ export -f docker[0K
+[0K[1A[19G[?25h[?25l$ export -f docke[0K
+[0K[1A[18G[?25h[?25l$ export -f dock[0K
+[0K[1A[17G[?25h[?25l$ export -f doc[0K
+[0K[1A[16G[?25h[?25l$ export -f do[0K
+[0K[1A[15G[?25h[?25l$ export -f d[0K
+[0K[1A[14G[?25h[?25l$ export -f[0K
+[0K[1A[12G[?25h[?25l$ export -[0K
+[0K[1A[11G[?25h[?25l$ export[0K
+[0K[1A[10G[?25h[9G[?25l$ expor[0K
+[0K[1A[8G[?25h[?25l$ expo[0K
+[0K[1A[7G[?25h[?25l$ exp[0K
+[0K[1A[6G[?25h[5G[?25l$ ex[0K
+[0K[1A[5G[?25h[?25l$ e[0K
+[0K[1A[4G[?25h[?25l$[0K
+[0K[1A[3G[?25h[?25l$ docker () {   MSYS_NO_PATHCONV=1 docker.exe "$@"; }[0K
+[0K[1A[54G[?25h[?25l$ cd[0K
+[0K[1A[5G[?25h[?25l$ echo[0K
+[0K[1A[7G[?25h[?25l$ echo "For help getting started, check out the docs at https://docs.docker.com"[0K
+[0K[1A[81G[?25h[?25l$ echo -e "${BLUE}docker${NC} is configured to use the ${GREEN}${VM}${NC} machine with IP ${GREEN}$(${DOCKER_MACHINE} ip ${VM})${NC}"[0K
+[0K[1A[134G[?25h[?25l$ EOF[0K
+[0K[1A[6G[?25h[?25l$               \____\_______/[0K
+[0K[1A[31G[?25h[?25l$              \    \         __/[0K
+[0K[1A[34G[?25h[?25l$            \______ o           __/[0K
+[0K[1A[37G[?25h[?25l$       ~~~ {~~ ~~~~ ~~~ ~~~~ ~~~ ~ /  ===- ~~~[0K
+[0K[1A[48G[?25h[?25l$            /"""""""""""""""""\___/ ===[0K
+[0K[1A[41G[?25h[?25l$                ## ## ## ## ##    ===[0K
+[0K[1A[39G[?25h[?25l$                   ## ## ##        ==[0K
+[0K[1A[39G[?25h[?25l$                         ##         .[0K
+[0K[1A[39G[?25h[?25l$ cat << EOF[0K
+[0K[1A[13G[?25h[?25l$ clear[0K
+[0K[1A[8G[?25h[?25l$ STEP="Finalize"[0K
+[0K[1A[18G[?25h[?25l$ eval "$(${DOCKER_MACHINE} env --shell=bash --no-proxy ${VM})"[0K
+[0K[1A[64G[?25h[?25l$ STEP="Setting env"[0K
+[0K[1A[21G[?25h[?25l$ if [ "${VM_STATUS}" != "Running" ]; then   "${DOCKER_MACHINE}" start "${VM}";   yes | "${DOCKER_MACHINE}" regenerate-certs "${VM}"; fi[0K
+[0K[1A[137G[?25h[?25l$ VM_STATUS="$( set +e ; ${DOCKER_MACHINE} status ${VM} )"    }" start "${VM}";[0K
+[0K[1A[59G[?25h[?25l$ STEP="Checking status on $VM"    }" start "${VM}";[0K
+[0K[1A[32G[?25h[?25l$ if [ $VM_EXISTS_CODE -eq 1 ]; then   "${DOCKER_MACHINE}" rm -f "${VM}" &> /dev/null || :;   rm -rf ~/.docker/machine/machines/"${VM}"   i[0K
+f [ "${HTTP_PROXY}" ]; then     PROXY_ENV="$PROXY_ENV --engine-env HTTP_PROXY=$HTTP_PROXY";   fi;   if [ "${HTTPS_PROXY}" ]; then     PROXY[0K
+_ENV="$PROXY_ENV --engine-env HTTPS_PROXY=$HTTPS_PROXY";   fi;   if [ "${NO_PROXY}" ]; then     PROXY_ENV="$PROXY_ENV --engine-env NO_PROXY[0K
+=$NO_PROXY";   fi;   "${DOCKER_MACHINE}" create -d virtualbox $PROXY_ENV "${VM}"; fi[0K[?25h[?25l[3A$ STEP="Checking if machine $VM exists"[0K
+[0K
+[0K
+[0K[3A[40G[?25h[?25l$ VM_EXISTS_CODE=$?[0K
+[0K
+[0K
+[0K[3A[20G[?25h[?25l$ "${VBOXMANAGE}" list vms | grep \""${VM}"\" &> /dev/null[0K
+[0K
+[0K
+[0K[3A[59G[?25h[?25l$ if [ ! -f "${VBOXMANAGE}" ]; then   echo "VirtualBox is not installed. Please re-run the Toolbox Installer and try again.";   exit 1; fi[0K
+[0K
+[0K
+[0K[3A[139G[?25h[?25l$ if [ ! -f "${DOCKER_MACHINE}" ]; then   echo "Docker Machine is not installed. Please re-run the Toolbox Installer and try again.";   exi[0K
+t 1; fi[0K
+[0K
+[0K[2A[8G[?25h[?25l[1A$ if  [[ $all_proxy != socks* ]]; then   unset all_proxy; fi e is not installed. Ple[0K
+[0K
+[0K
+[0K[3A[61G[?25h[?25l$ if  [[ $ALL_PROXY != socks* ]]; then   unset ALL_PROXY; fi e is not installed. Ple[0K
+[0K
+[0K
+[0K[3A[61G[?25h[?25l$ #clear all_proxy if not socks address e is not installed. Ple[0K
+[0K
+[0K
+[0K[3A[40G[?25h[?25l$ NC='\033[0m'[0K
+[0K
+[0K
+[0K[3A[15G[?25h[?25l$ GREEN='\033[0;32m'[0K
+[0K
+[0K
+[0K[3A[21G[?25h[?25l$ BLUE='\033[1;34m'[0K
+[0K
+[0K
+[0K[3A[20G[?25h[?25l$ if [ ! -z "$VBOX_MSI_INSTALL_PATH" ]; then   VBOXMANAGE="${VBOX_MSI_INSTALL_PATH}VBoxManage.exe"; else   VBOXMANAGE="${VBOX_INSTALL_PATH}[0K
+VBoxManage.exe"; fi[0K
+[0K
+[0K[2A[20G[?25h[?25l[1A$ STEP="Looking for vboxmanage.exe"[0K
+[0K
+[0K
+[0K[3A[36G[?25h[?25l$ DOCKER_MACHINE=./docker-machine.exe[0K
+[0K
+[0K
+[0K[3A[38G[?25h[?25l$ STEP="Looking for vboxmanage.exe"[0K
+[0K
+[0K
+[0K[3A[36G[?25h[?25l$ if [ ! -z "$VBOX_MSI_INSTALL_PATH" ]; then   VBOXMANAGE="${VBOX_MSI_INSTALL_PATH}VBoxManage.exe"; else   VBOXMANAGE="${VBOX_INSTALL_PATH}[0K
+VBoxManage.exe"; fi[0K
+[0K
+[0K[2A[20G[?25h[?25l[1A$ BLUE='\033[1;34m'[0K
+[0K
+[0K
+[0K[3A[20G[?25h[?25l$ GREEN='\033[0;32m'[0K
+[0K
+[0K
+[0K[3A[21G[?25h[?25l$ NC='\033[0m'[0K
+[0K
+[0K
+[0K[3A[15G[?25h[?25l$ #clear all_proxy if not socks address[0K
+[0K
+[0K
+[0K[3A[40G[?25h[?25l$ if  [[ $ALL_PROXY != socks* ]]; then   unset ALL_PROXY; fi[0K
+[0K
+[0K
+[0K[3A[61G[?25h[?25l$ if  [[ $all_proxy != socks* ]]; then   unset all_proxy; fi[0K
+[0K
+[0K
+[0K[3A[61G[?25h[?25l$ if [ ! -f "${DOCKER_MACHINE}" ]; then   echo "Docker Machine is not installed. Please re-run the Toolbox Installer and try again.";   exi[0K
+t 1; fi[0K
+[0K
+[0K[2A[8G[?25h[?25l[1A$ if [ ! -f "${VBOXMANAGE}" ]; then   echo "VirtualBox is not installed. Please re-run the Toolbox Installer and try again.";   exit 1; fi[0K
+[0K
+[0K
+[0K[3A[139G[?25h[?25l$ "${VBOXMANAGE}" list vms | grep \""${VM}"\" &> /dev/null  t installed. Please re[0K
+[0K
+[0K
+[0K[3A[59G[?25h[?25l$ VM_EXISTS_CODE=$?[0K
+[0K
+[0K
+[0K[3A[20G[?25h[?25l$ set -e[0K
+[0K
+[0K
+[0K[3A[9G[?25h[?25l$ STEP="Checking if machine $VM exists"[0K
+[0K
+[0K
+[0K[3A[40G[?25h[?25l$ if [ $VM_EXISTS_CODE -eq 1 ]; then   "${DOCKER_MACHINE}" rm -f "${VM}" &> /dev/null || :;   rm -rf ~/.docker/machine/machines/"${VM}"   i[0K
+f [ "${HTTP_PROXY}" ]; then     PROXY_ENV="$PROXY_ENV --engine-env HTTP_PROXY=$HTTP_PROXY";   fi;   if [ "${HTTPS_PROXY}" ]; then     PROXY[0K
+_ENV="$PROXY_ENV --engine-env HTTPS_PROXY=$HTTPS_PROXY";   fi;   if [ "${NO_PROXY}" ]; then     PROXY_ENV="$PROXY_ENV --engine-env NO_PROXY[0K
+=$NO_PROXY";   fi;   "${DOCKER_MACHINE}" create -d virtualbox $PROXY_ENV "${VM}"; fi[0K[?25h[?25l[3A$ STEP="Checking status on $VM"[0K
+[0K
+[0K
+[0K[3A[32G[?25h[?25l$ VM_STATUS="$( set +e ; ${DOCKER_MACHINE} status ${VM} )"[0K
+[0K
+[0K
+[0K[3A[59G[?25h[?25l$ if [ "${VM_STATUS}" != "Running" ]; then   "${DOCKER_MACHINE}" start "${VM}";   yes | "${DOCKER_MACHINE}" regenerate-certs "${VM}"; fi[0K
+[0K
+[0K
+[0K[3A[137G[?25h[?25l$ STEP="Setting env"[0K
+[0K
+[0K
+[0K[3A[21G[?25h[?25l$ eval "$(${DOCKER_MACHINE} env --shell=bash --no-proxy ${VM})"[0K
+[0K
+[0K
+[0K[3A[64G[?25h[?25l$ STEP="Finalize"[0K
+[0K
+[0K
+[0K[3A[18G[?25h[?25l$ clear[0K
+[0K
+[0K
+[0K[3A[8G[?25h[?25l$ cat << EOF[0K
+[0K
+[0K
+[0K[3A[13G[?25h[?25l$                         ##         .[0K
+[0K
+[0K
+[0K[3A[39G[?25h[?25l$                   ## ## ##        ==[0K
+[0K
+[0K
+[0K[3A[39G[?25h[?25l$                ## ## ## ## ##    ===[0K
+[0K
+[0K
+[0K[3A[39G[?25h[?25l$            /"""""""""""""""""\___/ ===[0K
+[0K
+[0K
+[0K[3A[41G[?25h[?25l$       ~~~ {~~ ~~~~ ~~~ ~~~~ ~~~ ~ /  ===- ~~~[0K
+[0K
+[0K
+[0K[3A[48G[?25h[?25l$            \______ o           __/[0K
+[0K
+[0K
+[0K[3A[37G[?25h[?25l$              \    \         __/[0K
+[0K
+[0K
+[0K[3A[34G[?25h[?25l$               \____\_______/[0K
+[0K
+[0K
+[0K[3A[31G[?25h[?25l$ EOF[0K
+[0K
+[0K
+[0K[3A[6G[?25h[?25l$ echo -e "${BLUE}docker${NC} is configured to use the ${GREEN}${VM}${NC} machine with IP ${GREEN}$(${DOCKER_MACHINE} ip ${VM})${NC}"[0K
+[0K
+[0K
+[0K[3A[134G[?25h[?25l$ echo "For help getting started, check out the docs at https://docs.docker.com"[0K
+[0K
+[0K
+[0K[3A[81G[?25h[?25l$ echo[0K
+[0K
+[0K
+[0K[3A[7G[?25h[?25l$ cd[0K
+[0K
+[0K
+[0K[3A[5G[?25h[?25l$ docker () {   MSYS_NO_PATHCONV=1 docker.exe "$@"; }[0K
+[0K
+[0K
+[0K[3A[54G[?25h[?25l$[0K
+[0K
+[0K
+[0K[3A[3G[?25h[?25l$ if [ $# -eq 0 ]; then   echo "Start interactive shell";   exec "$BASH" --login -i; else   echo "Start shell with command";   exec "$BASH"[0K
+ -c "$*"; fi[0K
+[0K
+[0K[2A[13G[?25h[?25l[1A$[0K
+[0K
+[0K
+[0K[3A[3G[?25h[?25l$ m[0K
+[0K
+[0K
+[0K[3A[4G[?25h[?25l$ mv[0K
+[0K
+[0K
+[0K[3A[5G[?25h[6G[?25l$ mv ~[0K
+[0K
+[0K
+[0K[3A[7G[?25h[?25l$ mv ~D[0K
+[0K
+[0K
+[0K[3A[8G[?25h[?25l$ mv ~Do[0K
+[0K
+[0K
+[0K[3A[9G[?25h[?25l$ mv ~D[0K
+[0K
+[0K
+[0K[3A[8G[?25h[?25l$ mv ~[0K
+[0K
+[0K
+[0K[3A[7G[?25h[?25l$ mv ~/[0K
+[0K
+[0K
+[0K[3A[8G[?25h[?25l$ mv ~/D[0K
+[0K
+[0K
+[0K[3A[9G[?25h[?25l$ mv ~/Do[0K
+[0K
+[0K
+[0K[3A[10G[?25h[?25l$ mv ~/Doc[0K
+[0K
+[0K
+[0K[3A[11G[?25h[?25l$ mv ~/Docu[0K
+[0K
+[0K
+[0K[3A[12G[?25h[?25l$ mv ~/Docum[0K
+[0K
+[0K
+[0K[3A[13G[?25h[?25l$ mv ~/Docume[0K
+[0K
+[0K
+[0K[3A[14G[?25h[?25l$ mv ~/Documen[0K
+[0K
+[0K
+[0K[3A[15G[?25h[?25l$ mv ~/Document[0K
+[0K
+[0K
+[0K[3A[16G[?25h[?25l$ mv ~/Documents[0K
+[0K
+[0K
+[0K[3A[17G[?25h[?25l$ mv ~/Documents/[0K
+[0K
+[0K
+[0K[3A[18G[?25h[?25l$ mv ~/Documents/P[0K
+[0K
+[0K
+[0K[3A[19G[?25h[?25l$ mv ~/Documents/Po[0K
+[0K
+[0K
+[0K[3A[20G[?25h[?25l$ mv ~/Documents/Pou[0K
+[0K
+[0K
+[0K[3A[21G[?25h[?25l$ mv ~/Documents/Po[0K
+[0K
+[0K
+[0K[3A[20G[?25h[?25l$ mv ~/Documents/Pop[0K
+[0K
+[0K
+[0K[3A[21G[?25h[?25l$ mv ~/Documents/Popu[0K
+[0K
+[0K
+[0K[3A[22G[?25h[?25l$ mv ~/Documents/Popul[0K
+[0K
+[0K
+[0K[3A[23G[?25h[?25l$ mv ~/Documents/Popula[0K
+[0K
+[0K
+[0K[3A[24G[?25h[?25l$ mv ~/Documents/Populat[0K
+[0K
+[0K
+[0K[3A[25G[?25h[?25l$ mv ~/Documents/Populati[0K
+[0K
+[0K
+[0K[3A[26G[?25h[?25l$ mv ~/Documents/Populatio[0K
+[0K
+[0K
+[0K[3A[27G[?25h[?25l$ mv ~/Documents/Population[0K
+[0K
+[0K
+[0K[3A[28G[?25h[?25l$ mv ~/Documents/Populationd[0K
+[0K
+[0K
+[0K[3A[29G[?25h[?25l$ mv ~/Documents/Populationda[0K
+[0K
+[0K
+[0K[3A[30G[?25h[?25l$ mv ~/Documents/Populationdar[0K
+[0K
+[0K
+[0K[3A[31G[?25h[?25l$ mv ~/Documents/Populationdara[0K
+[0K
+[0K
+[0K[3A[32G[?25h[?25l$ mv ~/Documents/Populationdar[0K
+[0K
+[0K
+[0K[3A[31G[?25h[?25l$ mv ~/Documents/Populationda[0K
+[0K
+[0K
+[0K[3A[30G[?25h[?25l$ mv ~/Documents/Populationdat[0K
+[0K
+[0K
+[0K[3A[31G[?25h[?25l$ mv ~/Documents/Populationdata[0K
+[0K
+[0K
+[0K[3A[32G[?25h[?25l$ mv ~/Documents/Populationdata/[0K
+[0K
+[0K
+[0K[3A[33G[?25h[?25l$ mv ~/Documents/Populationdata/'[0K
+[0K
+[0K
+[0K[3A[34G[?25h[?25l$ mv ~/Documents/Populationdata/'P[0K
+[0K
+[0K
+[0K[3A[35G[?25h[?25l$ mv ~/Documents/Populationdata/'Po[0K
+[0K
+[0K
+[0K[3A[36G[?25h[?25l$ mv ~/Documents/Populationdata/'Pop[0K
+[0K
+[0K
+[0K[3A[37G[?25h[?25l$ mv ~/Documents/Populationdata/'Popu[0K
+[0K
+[0K
+[0K[3A[38G[?25h[?25l$ mv ~/Documents/Populationdata/'Popul[0K
+[0K
+[0K
+[0K[3A[39G[?25h[?25l$ mv ~/Documents/Populationdata/'Popula[0K
+[0K
+[0K
+[0K[3A[40G[?25h[?25l$ mv ~/Documents/Populationdata/'Populat[0K
+[0K
+[0K
+[0K[3A[41G[?25h[?25l$ mv ~/Documents/Populationdata/'Populati[0K
+[0K
+[0K
+[0K[3A[42G[?25h[?25l$ mv ~/Documents/Populationdata/'Populatio[0K
+[0K
+[0K
+[0K[3A[43G[?25h[?25l$ mv ~/Documents/Populationdata/'Population[0K
+[0K
+[0K
+[0K[3A[44G[?25h[45G[?25l$ mv ~/Documents/Populationdata/'Population d[0K
+[0K
+[0K
+[0K[3A[46G[?25h[?25l$ mv ~/Documents/Populationdata/'Population da[0K
+[0K
+[0K
+[0K[3A[47G[?25h[?25l$ mv ~/Documents/Populationdata/'Population dat[0K
+[0K
+[0K
+[0K[3A[48G[?25h[?25l$ mv ~/Documents/Populationdata/'Population data[0K
+[0K
+[0K
+[0K[3A[49G[?25h[?25l$ mv ~/Documents/Populationdata/'Population data.[0K
+[0K
+[0K
+[0K[3A[50G[?25h[?25l$ mv ~/Documents/Populationdata/'Population data.R[0K
+[0K
+[0K
+[0K[3A[51G[?25h[?25l$ mv ~/Documents/Populationdata/'Population data.Rp[0K
+[0K
+[0K
+[0K[3A[52G[?25h[?25l$ mv ~/Documents/Populationdata/'Population data.Rpr[0K
+[0K
+[0K
+[0K[3A[53G[?25h[?25l$ mv ~/Documents/Populationdata/'Population data.Rpro[0K
+[0K
+[0K
+[0K[3A[54G[?25h[?25l$ mv ~/Documents/Populationdata/'Population data.Rproj[0K
+[0K
+[0K
+[0K[3A[55G[?25h[?25l$ mv ~/Documents/Populationdata/'Population data.Rproj'[0K
+[0K
+[0K
+[0K[3A[56G[?25h[57G[?25l$ mv ~/Documents/Populationdata/'Population data.Rproj' ~[0K
+[0K
+[0K
+[0K[3A[58G[?25h[?25l$ mv ~/Documents/Populationdata/'Population data.Rproj' ~/[0K
+[0K
+[0K
+[0K[3A[59G[?25h[?25l$ mv ~/Documents/Populationdata/'Population data.Rproj' ~/D[0K
+[0K
+[0K
+[0K[3A[60G[?25h[?25l$ mv ~/Documents/Populationdata/'Population data.Rproj' ~/Do[0K
+[0K
+[0K
+[0K[3A[61G[?25h[?25l$ mv ~/Documents/Populationdata/'Population data.Rproj' ~/Doc[0K
+[0K
+[0K
+[0K[3A[62G[?25h[?25l$ mv ~/Documents/Populationdata/'Population data.Rproj' ~/Docu[0K
+[0K
+[0K
+[0K[3A[63G[?25h[?25l$ mv ~/Documents/Populationdata/'Population data.Rproj' ~/Docum[0K
+[0K
+[0K
+[0K[3A[64G[?25h[?25l$ mv ~/Documents/Populationdata/'Population data.Rproj' ~/Docume[0K
+[0K
+[0K
+[0K[3A[65G[?25h[?25l$ mv ~/Documents/Populationdata/'Population data.Rproj' ~/Documen[0K
+[0K
+[0K
+[0K[3A[66G[?25h[?25l$ mv ~/Documents/Populationdata/'Population data.Rproj' ~/Document[0K
+[0K
+[0K
+[0K[3A[67G[?25h[?25l$ mv ~/Documents/Populationdata/'Population data.Rproj' ~/Documents[0K
+[0K
+[0K
+[0K[3A[68G[?25h[?25l$ mv ~/Documents/Populationdata/'Population data.Rproj' ~/Documents/[0K
+[0K
+[0K
+[0K[3A[69G[?25h[?25l$ mv ~/Documents/Populationdata/'Population data.Rproj' ~/Documents/P[0K
+[0K
+[0K
+[0K[3A[70G[?25h[?25l$ mv ~/Documents/Populationdata/'Population data.Rproj' ~/Documents/Po[0K
+[0K
+[0K
+[0K[3A[71G[?25h[?25l$ mv ~/Documents/Populationdata/'Population data.Rproj' ~/Documents/Pop[0K
+[0K
+[0K
+[0K[3A[72G[?25h[?25l$ mv ~/Documents/Populationdata/'Population data.Rproj' ~/Documents/Popu[0K
+[0K
+[0K
+[0K[3A[73G[?25h[?25l$ mv ~/Documents/Populationdata/'Population data.Rproj' ~/Documents/Popul[0K
+[0K
+[0K
+[0K[3A[74G[?25h[?25l$ mv ~/Documents/Populationdata/'Population data.Rproj' ~/Documents/Popula[0K
+[0K
+[0K
+[0K[3A[75G[?25h[?25l$ mv ~/Documents/Populationdata/'Population data.Rproj' ~/Documents/Populat[0K
+[0K
+[0K
+[0K[3A[76G[?25h[?25l$ mv ~/Documents/Populationdata/'Population data.Rproj' ~/Documents/Populati[0K
+[0K
+[0K
+[0K[3A[77G[?25h[?25l$ mv ~/Documents/Populationdata/'Population data.Rproj' ~/Documents/Populatio[0K
+[0K
+[0K
+[0K[3A[78G[?25h[?25l$ mv ~/Documents/Populationdata/'Population data.Rproj' ~/Documents/Population[0K
+[0K
+[0K
+[0K[3A[79G[?25h[?25l$ mv ~/Documents/Populationdata/'Population data.Rproj' ~/Documents/Populationd[0K
+[0K
+[0K
+[0K[3A[80G[?25h[?25l$ mv ~/Documents/Populationdata/'Population data.Rproj' ~/Documents/Populationda[0K
+[0K
+[0K
+[0K[3A[81G[?25h[?25l$ mv ~/Documents/Populationdata/'Population data.Rproj' ~/Documents/Populationdar[0K
+[0K
+[0K
+[0K[3A[82G[?25h[?25l$ mv ~/Documents/Populationdata/'Population data.Rproj' ~/Documents/Populationdara[0K
+[0K
+[0K
+[0K[3A[83G[?25h[?25l$ mv ~/Documents/Populationdata/'Population data.Rproj' ~/Documents/Populationdar[0K
+[0K
+[0K
+[0K[3A[82G[?25h[?25l$ mv ~/Documents/Populationdata/'Population data.Rproj' ~/Documents/Populationda[0K
+[0K
+[0K
+[0K[3A[81G[?25h[?25l$ mv ~/Documents/Populationdata/'Population data.Rproj' ~/Documents/Populationdat[0K
+[0K
+[0K
+[0K[3A[82G[?25h[?25l$ mv ~/Documents/Populationdata/'Population data.Rproj' ~/Documents/Populationdata[0K
+[0K
+[0K
+[0K[3A[83G[?25h[?25l$ mv ~/Documents/Populationdata/'Population data.Rproj' ~/Documents/Populationdata/[0K
+[0K
+[0K
+[0K[3A[84G[?25h[?25l$ mv ~/Documents/Populationdata/'Population data.Rproj' ~/Documents/Populationdata/s[0K
+[0K
+[0K
+[0K[3A[85G[?25h[?25l$ mv ~/Documents/Populationdata/'Population data.Rproj' ~/Documents/Populationdata/sc[0K
+[0K
+[0K
+[0K[3A[86G[?25h[?25l$ mv ~/Documents/Populationdata/'Population data.Rproj' ~/Documents/Populationdata/scr[0K
+[0K
+[0K
+[0K[3A[87G[?25h[?25l$ mv ~/Documents/Populationdata/'Population data.Rproj' ~/Documents/Populationdata/scri[0K
+[0K
+[0K
+[0K[3A[88G[?25h[?25l$ mv ~/Documents/Populationdata/'Population data.Rproj' ~/Documents/Populationdata/scrip[0K
+[0K
+[0K
+[0K[3A[89G[?25h[?25l$ mv ~/Documents/Populationdata/'Population data.Rproj' ~/Documents/Populationdata/script[0K
+[0K
+[0K
+[0K[3A[90G[?25h[?25l
+[?25h[?25l
+[0;32mDWP Hive 13@DWPHive13-HP [0;35m [0;33m~/Documents/Populationdata[0;36m (master)[0m[0K
+$[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0K[7G[?25l$ git c[0K[?25ho[0Km[0Km[0Ki[0Kt[0K[14G[?25l$ git commit -[0K[?25hm[0K[17G[?25l$ git commit -m "[0K[?25h[?25l$ git commit -m[0K[17G[?25h[16G[?25l$ git commit -[0K[?25h[?25l$ git commit[0K[14G[?25h[13G[?25l$ git commi[0K[?25h[?25l$ git comm[0K[?25h[?25l$ git com[0K[?25h[?25l$ git co[0K[?25h[?25l$ git c[0K[?25h[?25l$ git[0K[7G[?25h[6G[?25l$ gi[0K[?25h[?25l$ g[0K[?25h[?25l$[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0K[7G[?25l$ git s[0K[?25ht[0Ka[0Kt[0Ku[0Ks[0K[?25l
+[0K[?25hOn branch master[0K[?25l
+[0K
+No commits yet[0K
+[0K
+Changes to be committed:[0K
+  (use "git rm --cached <file>..." to unstage)[0K
+[0K
+        [0;32mnew file:   .Rproj.user/CF52F1A4/console06/510E2F6E[0m[0K
+        [0;32mnew file:   .Rproj.user/CF52F1A4/console06/INDEX001[0m[0K
+        [0;32mnew file:   .Rproj.user/CF52F1A4/pcs/files-pane.pper[0m[0K
+        [0;32mnew file:   .Rproj.user/CF52F1A4/pcs/source-pane.pper[0m[0K
+        [0;32mnew file:   .Rproj.user/CF52F1A4/pcs/windowlayoutstate.pper[0m[0K
+        [0;32mnew file:   .Rproj.user/CF52F1A4/pcs/workbench-pane.pper[0m[0K
+        [0;32mnew file:   .Rproj.user/CF52F1A4/rmd-outputs[0m[0K
+        [0;32mnew file:   .Rproj.user/CF52F1A4/saved_source_markers[0m[0K
+        [0;32mnew file:   .Rproj.user/CF52F1A4/sources/per/t/4D34484A[0m[0K
+        [0;32mnew file:   .Rproj.user/CF52F1A4/sources/per/t/4D34484A-contents[0m[0K
+        [0;32mnew file:   .Rproj.user/CF52F1A4/sources/prop/1845D59E[0m[0K
+        [0;32mnew file:   .Rproj.user/CF52F1A4/sources/prop/2A50C0B9[0m[0K
+        [0;32mnew file:   .Rproj.user/CF52F1A4/sources/prop/600206E6[0m[0K
+        [0;32mnew file:   .Rproj.user/CF52F1A4/sources/prop/A359913B[0m[0K
+        [0;32mnew file:   .Rproj.user/CF52F1A4/sources/prop/B1BACA3[0m[0K
+        [0;32mnew file:   .Rproj.user/CF52F1A4/sources/prop/C426EB95[0m[0K
+        [0;32mnew file:   .Rproj.user/CF52F1A4/sources/prop/INDEX[0m[0K
+        [0;32mnew file:   .Rproj.user/shared/notebooks/867B60DB-API/1/s/chunks.json[0m[0K
+        [0;32mnew file:   .Rproj.user/shared/notebooks/867B60DB-API/1/s/ckolmw6bkymru/000002.csv[0m[0K
+        [0;32mnew file:   .Rproj.user/shared/notebooks/867B60DB-API/1/s/ckolmw6bkymru/000003.metadata[0m[0K
+        [0;32mnew file:   .Rproj.user/shared/notebooks/867B60DB-API/1/s/ckolmw6bkymru/000003.png[0m[0K
+        [0;32mnew file:   .Rproj.user/shared/notebooks/867B60DB-API/1/s/ckolmw6bkymru/000003.snapshot[0m[0K
+        [0;32mnew file:   .Rproj.user/shared/notebooks/867B60DB-API/1/s/csetup_chunk/000002.csv[0m[0K
+        [0;32mnew file:   .Rproj.user/shared/notebooks/867B60DB-API/1/s/cx4opgdff2hef/000002.csv[0m[0K
+        [0;32mnew file:   .Rproj.user/shared/notebooks/patch-chunk-names[0m[0K
+        [0;32mnew file:   .Rproj.user/shared/notebooks/paths[0m[0K
+        [0;32mnew file:   AC Conference demo.Rmd[0m[0K
+        [0;32mnew file:   AC_Conference_demo.log[0m[0K
+        [0;32mnew file:   Archived data/2002-2011_data.csv[0m[0K
+        [0;32mnew file:   Archived data/RAW_data.csv[0m[0K
+        [0;32mnew file:   Archived data/data.csv[0m[0K
+        [0;32mnew file:   Archived data/data_part1.csv[0m[0K
+        [0;32mnew file:   Archived data/data_part2.csv[0m[0K
+        [0;32mnew file:   Archived data/old_data.csv[0m[0K
+        [0;32mnew file:   Archived data/population_2012_f.csv[0m[0K
+        [0;32mnew file:   Archived data/population_2012_m.csv[0m[0K
+        [0;32mnew file:   Archived data/population_2013_f.csv[0m[0K
+        [0;32mnew file:   Archived data/population_2013_m.csv[0m[0K
+        [0;32mnew file:   Archived data/population_2014_f.csv[0m[0K
+[0K[9G[?25h[?25l        [0;32mnew file:   Archived data/population_2014_m.csv[0m[0K
+        [0;32mnew file:   Archived data/population_2015_f.csv[0m[0K
+        [0;32mnew file:   Archived data/population_2015_m.csv[0m[0K
+        [0;32mnew file:   Archived data/population_2016_f.csv[0m[0K
+        [0;32mnew file:   Archived data/population_2016_m.csv[0m[0K
+        [0;32mnew file:   Nomis 2002-2011 data.csv[0m[0K
+        [0;32mnew file:   Nomis 2012-2016 data.csv[0m[0K
+        [0;32mnew file:   ParlC/ONS website data/2015.xls[0m[0K
+        [0;32mnew file:   ParlC/ONS website data/2016.xls[0m[0K
+        [0;32mnew file:   ParlC/ParlC_Males_2015.csv[0m[0K
+        [0;32mnew file:   ParlC/ParlC_Males_2016.xls[0m[0K
+        [0;32mnew file:   Population data.Rproj[0m[0K
+        [0;32mnew file:   Population report.Rmd[0m[0K
+        [0;32mnew file:   Population script.R[0m[0K
+        [0;32mnew file:   Population_data_wrangling.R[0m[0K
+        [0;32mnew file:   Population_report.docx[0m[0K
+        [0;32mnew file:   Scottish data zones/Scotland data zones female by age 2011.csv[0m[0K
+        [0;32mnew file:   Scottish data zones/Scotland data zones female by age 2012.csv[0m[0K
+        [0;32mnew file:   Scottish data zones/Scotland data zones female by age 2013.csv[0m[0K
+        [0;32mnew file:   Scottish data zones/Scotland data zones female by age 2014.csv[0m[0K
+        [0;32mnew file:   Scottish data zones/Scotland data zones female by age 2015.csv[0m[0K
+        [0;32mnew file:   Scottish data zones/Scotland data zones female by age 2016.csv[0m[0K
+        [0;32mnew file:   Scottish data zones/Scotland data zones male by age 2011.csv[0m[0K
+        [0;32mnew file:   Scottish data zones/Scotland data zones male by age 2012.csv[0m[0K
+        [0;32mnew file:   Scottish data zones/Scotland data zones male by age 2013.csv[0m[0K
+        [0;32mnew file:   Scottish data zones/Scotland data zones male by age 2014.csv[0m[0K
+        [0;32mnew file:   Scottish data zones/Scotland data zones male by age 2015.csv[0m[0K
+        [0;32mnew file:   Scottish data zones/Scotland data zones male by age 2016.csv[0m[0K
+        [0;32mnew file:   Scottish data zones/Scottish data zones script.R[0m[0K
+        [0;32mnew file:   data_2002_to_2011.csv[0m[0K
+        [0;32mnew file:   data_2002_to_2011.zip[0m[0K
+        [0;32mnew file:   data_2012_to_2016.csv[0m[0K
+        [0;32mnew file:   data_2012_to_2016.zip[0m[0K
+        [0;32mnew file:   script for older data.R[0m[0K
+[0K
+Changes not staged for commit:[0K
+  (use "git add/rm <file>..." to update what will be committed)[0K
+  (use "git checkout -- <file>..." to discard changes in working directory)[0K
+[0K
+        [0;31mmodified:   .Rproj.user/CF52F1A4/console06/510E2F6E[0m[0K
+        [0;31mmodified:   .Rproj.user/CF52F1A4/console06/INDEX001[0m[0K
+        [0;31mdeleted:    .Rproj.user/CF52F1A4/sources/per/t/4D34484A[0m[0K
+        [0;31mdeleted:    .Rproj.user/CF52F1A4/sources/per/t/4D34484A-contents[0m[0K
+        [0;31mmodified:   .Rproj.user/CF52F1A4/sources/prop/INDEX[0m[0K
+        [0;31mmodified:   .Rproj.user/shared/notebooks/paths[0m[0K
+        [0;31mdeleted:    AC Conference demo.Rmd[0m[0K
+        [0;31mdeleted:    AC_Conference_demo.log[0m[0K
+        [0;31mdeleted:    Nomis 2002-2011 data.csv[0m[0K
+        [0;31mdeleted:    Nomis 2012-2016 data.csv[0m[0K
+        [0;31mdeleted:    Population data.Rproj[0m[0K
+        [0;31mdeleted:    Population report.Rmd[0m[0K
+        [0;31mdeleted:    Population script.R[0m[0K
+        [0;31mdeleted:    Population_data_wrangling.R[0m[0K
+        [0;31mdeleted:    Population_report.docx[0m[0K
+        [0;31mdeleted:    data_2002_to_2011.csv[0m[0K
+        [0;31mdeleted:    data_2002_to_2011.zip[0m[0K
+        [0;31mdeleted:    data_2012_to_2016.csv[0m[0K
+        [0;31mdeleted:    data_2012_to_2016.zip[0m[0K
+        [0;31mdeleted:    script for older data.R[0m[0K
+[0K
+Untracked files:[0K
+  (use "git add <file>..." to include in what will be committed)[0K
+[0K
+        [0;31m.gitignore[0m[0K
+        [0;31mTeaching_Examples/[0m[0K
+        [0;31mdata/[0m[0K
+        [0;31mscript/[0m[0K
+[0K
+[0K[?25h[?25l
+[0;32mDWP Hive 13@DWPHive13-HP [0;35m [0;33m~/Documents/Populationdata[0;36m (master)[0m[0K
+$[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0K[7G[?25l$ git c[0K[?25ho[0Km[0Km[0Ki[0Kt[0K[14G[?25l$ git commit -[0K[?25hm[0K[17G[?25l$ git commit -m "[0K[?25hA[0Ko[0Ki[0Kf[0Ke[0K[?25l$ git commit -m "Aoif[0K[?25h[?25l$ git commit -m "Aoi[0K[?25h[?25l$ git commit -m "Ao[0K[?25h[?25l$ git commit -m "A[0K[?25h[?25l$ git commit -m "[0K[?25hT[0Ki[0Kd[0Ky[0Ki[0Kn[0Kg[0K[26G[?25l$ git commit -m "Tidying u[0K[?25hp[0K[29G[?25l$ git commit -m "Tidying up P[0K[?25ho[0Kp[0Ku[0Kl[0Ka[0Kt[0Ki[0Ko[0Kn[0Kd[0Ka[0Kt[0Ka[0K[44G[?25l$ git commit -m "Tidying up Populationdata f[0K[?25ho[0Kl[0Kd[0Ke[0Kr[0K[51G[?25l$ git commit -m "Tidying up Populationdata folder f[0K[?25ho[0Kr[0K[55G[?25l$ git commit -m "Tidying up Populationdata folder for e[0K[?25hf[0Kf[0Ki[0Kc[0Ki[0Ke[0Kn[0Kt[0K[65G[?25l$ git commit -m "Tidying up Populationdata folder for efficient f[0K[?25ho[0Kl[0K[?25l$ git commit -m "Tidying up Populationdata folder for efficient fo[0K[?25h[?25l$ git commit -m "Tidying up Populationdata folder for efficient f[0K[?25h[?25l$ git commit -m "Tidying up Populationdata folder for efficient[0K[65G[?25h[?25l$ git commit -m "Tidying up Populationdata folder for efficient v[0K[?25he[0Kr[0Ks[0Ki[0Ko[0Kn[0K[73G[?25l$ git commit -m "Tidying up Populationdata folder for efficient version o[0K[?25h[?25l$ git commit -m "Tidying up Populationdata folder for efficient version[0K[73G[?25h[?25l$ git commit -m "Tidying up Populationdata folder for efficient version c[0K[?25ho[0Kn[0Kt[0Kr[0Ko[0Kl[0K"[0K[?25l
+[0K[?25h[master (root-commit) 301303c] Tidying up Populationdata folder for efficient version control[0K[?25l
+ 73 files changed, 2611692 insertions(+)[0K
+ create mode 100644 .Rproj.user/CF52F1A4/console06/510E2F6E[0K
+ create mode 100644 .Rproj.user/CF52F1A4/console06/INDEX001[0K
+ create mode 100644 .Rproj.user/CF52F1A4/pcs/files-pane.pper[0K
+ create mode 100644 .Rproj.user/CF52F1A4/pcs/source-pane.pper[0K
+ create mode 100644 .Rproj.user/CF52F1A4/pcs/windowlayoutstate.pper[0K
+ create mode 100644 .Rproj.user/CF52F1A4/pcs/workbench-pane.pper[0K
+ create mode 100644 .Rproj.user/CF52F1A4/rmd-outputs[0K
+ create mode 100644 .Rproj.user/CF52F1A4/saved_source_markers[0K
+ create mode 100644 .Rproj.user/CF52F1A4/sources/per/t/4D34484A[0K
+ create mode 100644 .Rproj.user/CF52F1A4/sources/per/t/4D34484A-contents[0K
+ create mode 100644 .Rproj.user/CF52F1A4/sources/prop/1845D59E[0K
+ create mode 100644 .Rproj.user/CF52F1A4/sources/prop/2A50C0B9[0K
+ create mode 100644 .Rproj.user/CF52F1A4/sources/prop/600206E6[0K
+ create mode 100644 .Rproj.user/CF52F1A4/sources/prop/A359913B[0K
+ create mode 100644 .Rproj.user/CF52F1A4/sources/prop/B1BACA3[0K
+ create mode 100644 .Rproj.user/CF52F1A4/sources/prop/C426EB95[0K
+ create mode 100644 .Rproj.user/CF52F1A4/sources/prop/INDEX[0K
+ create mode 100644 .Rproj.user/shared/notebooks/867B60DB-API/1/s/chunks.json[0K
+ create mode 100644 .Rproj.user/shared/notebooks/867B60DB-API/1/s/ckolmw6bkymru/000002.csv[0K
+ create mode 100644 .Rproj.user/shared/notebooks/867B60DB-API/1/s/ckolmw6bkymru/000003.metadata[0K
+ create mode 100644 .Rproj.user/shared/notebooks/867B60DB-API/1/s/ckolmw6bkymru/000003.png[0K
+ create mode 100644 .Rproj.user/shared/notebooks/867B60DB-API/1/s/ckolmw6bkymru/000003.snapshot[0K
+ create mode 100644 .Rproj.user/shared/notebooks/867B60DB-API/1/s/csetup_chunk/000002.csv[0K
+ create mode 100644 .Rproj.user/shared/notebooks/867B60DB-API/1/s/cx4opgdff2hef/000002.csv[0K
+ create mode 100644 .Rproj.user/shared/notebooks/patch-chunk-names[0K
+ create mode 100644 .Rproj.user/shared/notebooks/paths[0K
+ create mode 100644 AC Conference demo.Rmd[0K
+ create mode 100644 AC_Conference_demo.log[0K
+ create mode 100644 Archived data/2002-2011_data.csv[0K
+ create mode 100644 Archived data/RAW_data.csv[0K
+ create mode 100644 Archived data/data.csv[0K
+ create mode 100644 Archived data/data_part1.csv[0K
+ create mode 100644 Archived data/data_part2.csv[0K
+ create mode 100644 Archived data/old_data.csv[0K
+ create mode 100644 Archived data/population_2012_f.csv[0K
+ create mode 100644 Archived data/population_2012_m.csv[0K
+ create mode 100644 Archived data/population_2013_f.csv[0K
+ create mode 100644 Archived data/population_2013_m.csv[0K
+ create mode 100644 Archived data/population_2014_f.csv[0K
+ create mode 100644 Archived data/population_2014_m.csv[0K
+ create mode 100644 Archived data/population_2015_f.csv[0K
+ create mode 100644 Archived data/population_2015_m.csv[0K
+ create mode 100644 Archived data/population_2016_f.csv[0K
+ create mode 100644 Archived data/population_2016_m.csv[0K
+ create mode 100644 Nomis 2002-2011 data.csv[0K
+ create mode 100644 Nomis 2012-2016 data.csv[0K
+ create mode 100644 ParlC/ONS website data/2015.xls[0K
+ create mode 100644 ParlC/ONS website data/2016.xls[0K
+ create mode 100644 ParlC/ParlC_Males_2015.csv[0K
+ create mode 100644 ParlC/ParlC_Males_2016.xls[0K
+ create mode 100644 Population data.Rproj[0K
+ create mode 100644 Population report.Rmd[0K
+ create mode 100644 Population script.R[0K
+ create mode 100644 Population_data_wrangling.R[0K
+ create mode 100644 Population_report.docx[0K
+ create mode 100644 Scottish data zones/Scotland data zones female by age 2011.csv[0K
+ create mode 100644 Scottish data zones/Scotland data zones female by age 2012.csv[0K
+ create mode 100644 Scottish data zones/Scotland data zones female by age 2013.csv[0K
+ create mode 100644 Scottish data zones/Scotland data zones female by age 2014.csv[0K
+ create mode 100644 Scottish data zones/Scotland data zones female by age 2015.csv[0K
+ create mode 100644 Scottish data zones/Scotland data zones female by age 2016.csv[0K
+ create mode 100644 Scottish data zones/Scotland data zones male by age 2011.csv[0K
+ create mode 100644 Scottish data zones/Scotland data zones male by age 2012.csv[0K
+ create mode 100644 Scottish data zones/Scotland data zones male by age 2013.csv[0K
+ create mode 100644 Scottish data zones/Scotland data zones male by age 2014.csv[0K
+ create mode 100644 Scottish data zones/Scotland data zones male by age 2015.csv[0K
+ create mode 100644 Scottish data zones/Scotland data zones male by age 2016.csv[0K
+ create mode 100644 Scottish data zones/Scottish data zones script.R[0K
+ create mode 100644 data_2002_to_2011.csv[0K
+ create mode 100644 data_2002_to_2011.zip[0K
+ create mode 100644 data_2012_to_2016.csv[0K
+ create mode 100644 data_2012_to_2016.zip[0K
+ create mode 100644 script for older data.R[0K
+[0K[?25h[?25l
+[0;32mDWP Hive 13@DWPHive13-HP [0;35m [0;33m~/Documents/Populationdata[0;36m (master)[0m[0K
+$[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0K[7G[?25l$ git a[0K[?25hd[0Kd[0K[11G[?25l$ git add .[0K[?25h[13G[12G

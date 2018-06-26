@@ -1,0 +1,178 @@
+library(dplyr)
+library(readr)
+library(reshape2)
+library(ggplot2)
+getwd()
+
+##before begining to read, check if any previous population figures have been revised!!
+
+
+#### ENGLAND #####
+##################
+
+###before reading in, remove the commas in the numbers within excel! Or find the r code to do this
+#year 2012
+population_male_2012 <- read.csv("population_2012_m.csv", header = TRUE)
+poulation_female_2012 <- read.csv("population_2012_f.csv", header = TRUE)
+#year 2016
+population_male_2013 <- read.csv("population_2013_m.csv", header = TRUE)
+poulation_female_2013 <- read.csv("population_2013_f.csv", header = TRUE)
+#year 2014
+population_male_2014 <- read.csv("population_2014_m.csv", header = TRUE)
+poulation_female_2014 <- read.csv("population_2014_f.csv", header = TRUE)
+#year 2015
+population_male_2015 <- read.csv("population_2015_m.csv", header = TRUE)
+poulation_female_2015 <- read.csv("population_2015_f.csv", header = TRUE)
+#year 2016
+population_male_2016 <- read.csv("population_2016_m.csv", header = TRUE)
+population_female_2016 <- read.csv("population_2016_f.csv", header = TRUE)
+##Update with new data
+##population_male_#### <- read.csv("population_####_m.csv", header = TRUE)
+##population_female_### <- read.csv("population_####_f.csv", header = TRUE)
+
+
+##This is to remove the "All ages" column as we don't want it.
+population_male_2012 <- population_male_2012[,-3]
+poulation_female_2012 <- poulation_female_2012[,-3]
+population_male_2013 <- population_male_2013[,-3]
+poulation_female_2013 <- poulation_female_2013[,-3]
+population_male_2014 <- population_male_2014[,-3]
+poulation_female_2014 <- poulation_female_2014[,-3]
+population_male_2015 <- population_male_2015[,-3]
+poulation_female_2015 <- poulation_female_2015[,-3]
+population_male_2016 <- population_male_2016[,-3]
+population_female_2016 <- population_female_2016[,-3]
+
+##Update with new data
+##population_male_#### <- population_male_###[,-3]
+##population_female_#### <- population_female_####[,-3]
+
+head(population_male)
+str(population_female)
+
+
+##Melts the dataset down (aka it "un-pivots the data). Before, the ages were columns, now their made in to rows with
+##corresponding regional values. Columns are also added to represent gender and year.
+
+Male_melt_2012 <- population_male_2012 %>%
+                  melt(measure.vars = c(3:93))%>% 
+                  mutate(Gender= "M")%>%
+                  mutate(Year = "2012")
+
+Male_melt_2013 <- population_male_2013 %>%
+                  melt(measure.vars = c(3:93))%>% 
+                  mutate(Gender= "M")%>%
+                  mutate(Year = "2013")
+                  
+Male_melt_2014 <- population_male_2014 %>%
+                  melt(measure.vars = c(3:93))%>% 
+                  mutate(Gender= "M")%>%
+                  mutate(Year = "2014")   
+
+Male_melt_2015 <- population_male_2015 %>%
+                  melt(measure.vars = c(3:93))%>% 
+                  mutate(Gender= "M")%>%
+                  mutate(Year = "2015")
+
+Male_melt_2016 <- population_male_2016 %>%
+                  melt(measure.vars = c(3:93))%>% 
+                  mutate(Gender= "M")%>%
+                  mutate(Year = "2016")
+
+Female_melt_2012 <- poulation_female_2012%>%
+                    melt(measure.vars = c(3:93))%>% 
+                    mutate(Gender= "F")%>%
+                    mutate(Year = "2012")
+
+Female_melt_2013 <- poulation_female_2013%>%
+                    melt(measure.vars = c(3:93))%>% 
+                    mutate(Gender= "F")%>%
+                    mutate(Year = "2013")
+
+Female_melt_2014 <- poulation_female_2014%>%
+                    melt(measure.vars = c(3:93))%>% 
+                    mutate(Gender= "F")%>%
+                    mutate(Year = "2014")
+
+Female_melt_2015 <- poulation_female_2015%>%
+                    melt(measure.vars = c(3:93))%>% 
+                    mutate(Gender= "F")%>%
+                    mutate(Year = "2015")
+
+Female_melt_2016 <- population_female_2016%>%
+            melt(measure.vars = c(3:93))%>% 
+            mutate(Gender= "F")%>%
+            mutate(Year = "2016")
+
+###COPY ABOVE CODE TO MELT THE YEAR YOU HAVE UPDATED
+
+
+##binds the male and female dataset together
+##IF UPDATING ADD THE MALE AND FEMALE MELTED DATA FOR THE MOST RECENT DATA
+data <- rbind(Male_melt_2016, Male_melt_2015, Male_melt_2014, Male_melt_2013, Male_melt_2012,Female_melt_2016, Female_melt_2015, Female_melt_2014, Female_melt_2013, Female_melt_2012)
+
+
+##removes the X in front of the age variable##
+data$variable <- sub("X", "", data$variable, fixed=TRUE)
+
+##removes higher level geographies, this should not need to be updated e.g. NORTH EAST##
+data<-data[!(data$Name=="UNITED KINGDOM" | data$Name== "GREAT BRITAIN" | data$Name== "ENGLAND AND WALES" | 
+               data$Name== "ENGLAND"| data$Name== "NORTH EAST"| data$Name== "NORTH WEST"| 
+               data$Name== "EAST"| data$Name== "EAST MIDLANDS"| data$Name== "LONDON"| 
+               data$Name== "SOUTH EAST"| data$Name== "SOUTH WEST"| data$Name== "YORKSHIRE AND THE HUMBER"|
+               data$Name== "WEST MIDLANDS"| data$Name== "WALES"| data$Name== "SCOTLAND"| 
+               data$Name== "NORTHERN IRELAND"| data$Name== "Tyne and Wear (Met County)"| 
+               data$Name== "Greater Manchester (Met County)"| data$Name== "Merseyside (Met County)"| 
+               data$Name== "South Yorkshire (Met County)"| data$Name== "West Yorkshire (Met County)"| 
+               data$Name== "West Midlands (Met County)"),]
+             
+data <-data [!(data$Name== "Lancashire"| data$Name== "North Yorkshire"|data$Name== "Leicestershire"| data$Name== "Lincolnshire"| data$Name== "Northamptonshire"| 
+               data$Name== "Nottinghamshire"| data$Name== "Staffordshire"| data$Name== "Warwickshire"| 
+               data$Name== "Worcestershire"| data$Name== "Essex"| data$Name== "Hertfordshire"|
+               data$Name== "Norfolk"| data$Name== "Suffolk"| data$Name== "Hampshire"|
+               data$Name== "Kent"| data$Name== "Oxfordshire"| data$Name== "Surrey"|
+               data$Name== "West Sussex"| data$Name== "Gloucestershire"| data$Name== "Somerset"| 
+               data$Name== "East Sussex"),]
+
+data <-data [!(data$Name== "Devon"| data$Name== "Dorset"|data$Name== "Cumbria"| data$Name== "Cambridgeshire"| 
+                       data$Name== "Buckinghamshire"| data$Name== "Derbyshire"),]
+
+
+ds <- data %>%
+  group_by(Name) %>%
+  summarize(sum_name = sum(value, na.rm = TRUE))
+
+sum(ds$sum_name)
+quick_check <- data %>%
+       group_by(Name)%>%
+  dplyr::count(value)
+
+checkz <- summarise(quick_check)
+
+sum(data$value)
+
+
+final_data <- data[,-2]
+
+write.csv(final_data, "data.csv")
+
+
+###graph demo##
+
+summary_data <- final_data %>% 
+  group_by(Year, Gender) %>% 
+  summarise(value = sum(value))
+
+graph_1 <- summary_data %>%
+    ggplot +
+  aes(
+    x = Year,
+    y = value,
+    group = Gender
+    )+
+  geom_line(color="red")+
+  geom_point()+
+  ggtitle("Mid year Population estimate example graph")
+
+graph_1
+  
