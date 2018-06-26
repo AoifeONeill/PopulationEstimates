@@ -6,11 +6,12 @@ library(dplyr)
 library(readr)
 library(reshape2)
 
+
 ##set working directory
 
 setwd("~/Population data")
 
-##Read in new datasets downloaded from Nomie. 
+##Read in new datasets downloaded from Nomis
 
 
 data_2002_to_2011 <- read.csv("Nomis 2002-2011 data.csv", header = TRUE)
@@ -25,6 +26,9 @@ data_2002_to_2011 <- data_2002_to_2011[!grepl("ONS Crown Copyright Reserved [fro
 
 data_2012_to_2016 <- data_2012_to_2016[!grepl("Population estimates - local authority based by single year of age", data_2012_to_2016$X),]
 data_2012_to_2016 <- data_2012_to_2016[!grepl("ONS Crown Copyright Reserved [from Nomis on 25 June 2018]", data_2012_to_2016$X),]
+
+
+##Subsetting the data in to gender and year
 
 population_male_2002 <- data_2002_to_2011[c(7:397), -1]
 population_female_2002 <- data_2002_to_2011[c(413:803), -1]
@@ -57,6 +61,7 @@ population_female_2015 <- data_2012_to_2016[c(2849:3239), -1]
 population_male_2016 <- data_2012_to_2016[c(3255:3645), -1]
 population_female_2016 <- data_2012_to_2016[c(3661:4051), -1]
 
+###Giving the susbsetted data frames the correct column names. Code is for the Local authority code, and 0:90 represents age
 
 colnames(population_male_2002) <- c("Code", 0:90)
 colnames(population_male_2003) <- c("Code", 0:90)
@@ -263,10 +268,9 @@ summary_data <- final_data_2002_to_2011 %>%
   group_by(Year) %>% 
   summarise(value = sum(value, na.rm = TRUE))
 
-
-ds <- data %>%
-  group_by(Year) %>%
-  summarize(sum_Year = sum(value, na.rm = TRUE))
+summary_data <- final_data_2012_to_2016 %>% 
+  group_by(Year) %>% 
+  summarise(value = sum(value, na.rm = TRUE))
 
 ##Create the two final csv files to be put on to SQL server. 
 
