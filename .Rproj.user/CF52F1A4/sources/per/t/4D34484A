@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1521554853159.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "902435761",
+    "id" : "4D34484A",
+    "lastKnownWriteTime" : 1523285490,
+    "last_content_update" : 1523285490691,
+    "path" : "~/Population data/Population_data_wrangling.R",
+    "project_path" : "Population_data_wrangling.R",
+    "properties" : {
+        "cursorPosition" : "123,0",
+        "scrollLine" : "112",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
