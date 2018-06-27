@@ -1,7 +1,7 @@
 ##Population Estimates##
 
 ###Load required Libraries##
-
+library(plyr)
 library(dplyr)
 library(readr)
 library(reshape2)
@@ -9,13 +9,13 @@ library(reshape2)
 
 ##set working directory
 
-setwd("~/Population data")
+setwd("~/PopulationEstimates")
 
 ##Read in new datasets downloaded from Nomis
 
 
-data_2002_to_2011 <- read.csv("Nomis 2002-2011 data.csv", header = TRUE)
-data_2012_to_2016 <- read.csv("Nomis 2012-2016 data.csv", header = TRUE)
+data_2002_to_2011 <- read.csv("~/PopulationEstimates/data/raw_data/Nomis 2002-2011 data.csv", header = TRUE)
+data_2012_to_2016 <- read.csv("~/PopulationEstimates/data/raw_data/Nomis 2012-2016 data.csv", header = TRUE)
 
 View(data_2002_to_2011)
 
@@ -263,6 +263,7 @@ final_data_2002_to_2011$value <- as.numeric(as.character(final_data_2002_to_2011
 final_data_2012_to_2016$value <- as.numeric(as.character(final_data_2012_to_2016$value))
 
 
+
 ##Creates a table showing the population for each year. I use this code to make sure that the datasets are correct, by quickly comparing my yearly totals to ONS's
 summary_data <- final_data_2002_to_2011 %>% 
   group_by(Year) %>% 
@@ -272,8 +273,16 @@ summary_data <- final_data_2012_to_2016 %>%
   group_by(Year) %>% 
   summarise(value = sum(value, na.rm = TRUE))
 
+##re-order and rename columns of final dataset
+
+colnames(final_data_2002_to_2011) <- c("LA Code", "Age", "Population Estimate", "Gender", "Year")
+final_data_2002_to_2011 <- final_data_2002_to_2011[c("LA Code", "Age", "Gender", "Year", "Population Estimate")]
+
+colnames(final_data_2012_to_2016) <- c("LA Code", "Age", "Population Estimate", "Gender", "Year")
+final_data_2012_to_2016 <- final_data_2012_to_2016[c("LA Code", "Age", "Gender", "Year", "Population Estimate")]
+
 ##Create the two final csv files to be put on to SQL server. 
 
-write.csv(final_data_2012_to_2016, "data_2012_to_2016.csv")
+write.csv(final_data_2012_to_2016, "~/PopulationEstimates/data/output_data/data_2012_to_2016.csv")
 
-write.csv(final_data_2002_to_2011, "data_2002_to_2011.csv")
+write.csv(final_data_2002_to_2011, "~/PopulationEstimates/data/output_data/data_2002_to_2011.csv")
