@@ -15,7 +15,7 @@ setwd("~/PopulationEstimates")
 
 
 data_2002_to_2011 <- read.csv("~/PopulationEstimates/data/raw_data/Nomis 2002-2011 data.csv", header = TRUE)
-data_2012_to_2016 <- read.csv("~/PopulationEstimates/data/raw_data/Nomis 2012-2016 data.csv", header = TRUE)
+data_2012_to_2017 <- read.csv("~/PopulationEstimates/data/raw_data/Nomis 2012-2017 data.csv", header = TRUE)
 
 View(data_2002_to_2011)
 
@@ -24,8 +24,8 @@ View(data_2002_to_2011)
 data_2002_to_2011 <- data_2002_to_2011[!grepl("Population estimates - local authority based by single year of age", data_2002_to_2011$X),]
 data_2002_to_2011 <- data_2002_to_2011[!grepl("ONS Crown Copyright Reserved [from Nomis on 14 June 2018]", data_2002_to_2011$X),]
 
-data_2012_to_2016 <- data_2012_to_2016[!grepl("Population estimates - local authority based by single year of age", data_2012_to_2016$X),]
-data_2012_to_2016 <- data_2012_to_2016[!grepl("ONS Crown Copyright Reserved [from Nomis on 25 June 2018]", data_2012_to_2016$X),]
+data_2012_to_2017 <- data_2012_to_2017[!grepl("Population estimates - local authority based by single year of age", data_2012_to_2017$X),]
+data_2012_to_2017 <- data_2012_to_2017[!grepl("ONS Crown Copyright Reserved [from Nomis on 25 June 2018]", data_2012_to_2017$X),]
 
 
 ##Subsetting the data in to gender and year
@@ -50,16 +50,20 @@ population_male_2010 <- data_2002_to_2011[c(6503:6893), -1]
 population_female_2010 <- data_2002_to_2011[c(6909:7299), -1]
 population_male_2011 <- data_2002_to_2011[c(7315:7705), -1]
 population_female_2011 <- data_2002_to_2011[c(7721:8111), -1]
-population_male_2012 <- data_2012_to_2016[c(7:397), -1]
-population_female_2012 <- data_2012_to_2016[c(413:803), -1]
-population_male_2013 <- data_2012_to_2016[c(819:1209), -1]
-population_female_2013 <- data_2012_to_2016[c(1225:1615), -1]
-population_male_2014 <- data_2012_to_2016[c(1631:2021), -1]
-population_female_2014 <- data_2012_to_2016[c(2037:2427), -1]
-population_male_2015 <- data_2012_to_2016[c(2443:2833), -1]
-population_female_2015 <- data_2012_to_2016[c(2849:3239), -1]
-population_male_2016 <- data_2012_to_2016[c(3255:3645), -1]
-population_female_2016 <- data_2012_to_2016[c(3661:4051), -1]
+population_male_2012 <- data_2012_to_2017[c(7:397), -1]
+population_female_2012 <- data_2012_to_2017[c(413:803), -1]
+population_male_2013 <- data_2012_to_2017[c(819:1209), -1]
+population_female_2013 <- data_2012_to_2017[c(1225:1615), -1]
+population_male_2014 <- data_2012_to_2017[c(1631:2021), -1]
+population_female_2014 <- data_2012_to_2017[c(2037:2427), -1]
+population_male_2015 <- data_2012_to_2017[c(2443:2833), -1]
+population_female_2015 <- data_2012_to_2017[c(2849:3239), -1]
+population_male_2016 <- data_2012_to_2017[c(3255:3645), -1]
+population_female_2016 <- data_2012_to_2017[c(3661:4051), -1]
+
+##UPDATE THE BRACKETS
+population_male_2017 <- data_2012_to_2017[c(4067:4457), -1]
+population_female_2017 <- data_2012_to_2017[c(4473:4863), -1]
 
 ###Giving the susbsetted data frames the correct column names. Code is for the Local authority code, and 0:90 represents age
 
@@ -88,12 +92,13 @@ colnames(population_male_2013) <- c("Code", 0:90)
 colnames(population_male_2014) <- c("Code", 0:90)
 colnames(population_male_2015) <- c("Code", 0:90)
 colnames(population_male_2016) <- c("Code", 0:90)
+colnames(population_male_2017) <- c("Code", 0:90)
 colnames(population_female_2012) <- c("Code", 0:90)
 colnames(population_female_2013) <- c("Code", 0:90)
 colnames(population_female_2014) <- c("Code", 0:90)
 colnames(population_female_2015) <- c("Code", 0:90)
 colnames(population_female_2016) <- c("Code", 0:90)
-
+colnames(population_female_2017) <- c("Code", 0:90)
 
 ##Melts the dataset down (aka it "un-pivots the data). Before, the ages were columns, now their made in to rows with
 ##corresponding regional values. Columns are also added to represent gender and year.
@@ -173,6 +178,11 @@ Male_melt_2016 <- population_male_2016 %>%
   mutate(Gender= "M")%>%
   mutate(Year = "2016")
 
+Male_melt_2017 <- population_male_2017 %>%
+  melt(measure.vars = c(2:92))%>% 
+  mutate(Gender= "M")%>%
+  mutate(Year = "2017")
+
 Female_melt_2002 <- population_female_2002%>%
   melt(measure.vars = c(2:92))%>% 
   mutate(Gender= "F")%>%
@@ -248,6 +258,10 @@ Female_melt_2016 <- population_female_2016%>%
   mutate(Gender= "F")%>%
   mutate(Year = "2016")
 
+Female_melt_2017 <- population_female_2017%>%
+  melt(measure.vars = c(2:92))%>% 
+  mutate(Gender= "F")%>%
+  mutate(Year = "2017")
 
 ###COPY ABOVE CODE TO MELT THE YEAR YOU HAVE UPDATED
 
@@ -255,21 +269,21 @@ Female_melt_2016 <- population_female_2016%>%
 ##binds the male and female dataset together
 ##IF UPDATING ADD THE MALE AND FEMALE MELTED DATA FOR THE MOST RECENT DATA
 final_data_2002_to_2011 <- rbind(Male_melt_2002, Male_melt_2003, Male_melt_2004, Male_melt_2005, Male_melt_2006, Male_melt_2007, Male_melt_2008, Male_melt_2009, Male_melt_2010, Male_melt_2011, Female_melt_2002, Female_melt_2003, Female_melt_2004, Female_melt_2005, Female_melt_2006, Female_melt_2007, Female_melt_2008, Female_melt_2009, Female_melt_2010, Female_melt_2011)
-final_data_2012_to_2016 <- rbind(Male_melt_2012, Male_melt_2013, Male_melt_2014, Male_melt_2015, Male_melt_2016, Female_melt_2012, Female_melt_2013, Female_melt_2014, Female_melt_2015, Female_melt_2016)
+final_data_2012_to_2017 <- rbind(Male_melt_2012, Male_melt_2013, Male_melt_2014, Male_melt_2015, Male_melt_2016, Male_melt_2017, Female_melt_2012, Female_melt_2013, Female_melt_2014, Female_melt_2015, Female_melt_2016, Female_melt_2017)
 
 
 ##this changes the count value to a number, as when its first created R classifies it as a character
 final_data_2002_to_2011$value <- as.numeric(as.character(final_data_2002_to_2011$value))
-final_data_2012_to_2016$value <- as.numeric(as.character(final_data_2012_to_2016$value))
+final_data_2012_to_2017$value <- as.numeric(as.character(final_data_2012_to_2017$value))
 
 
 
 ##Creates a table showing the population for each year. I use this code to make sure that the datasets are correct, by quickly comparing my yearly totals to ONS's
-summary_data <- final_data_2002_to_2011 %>% 
+summary_data_2011<- final_data_2002_to_2011 %>% 
   group_by(Year) %>% 
   summarise(value = sum(value, na.rm = TRUE))
 
-summary_data <- final_data_2012_to_2016 %>% 
+summary_data_2017 <- final_data_2012_to_2017 %>% 
   group_by(Year) %>% 
   summarise(value = sum(value, na.rm = TRUE))
 
@@ -278,11 +292,11 @@ summary_data <- final_data_2012_to_2016 %>%
 colnames(final_data_2002_to_2011) <- c("LA Code", "Age", "Population Estimate", "Gender", "Year")
 final_data_2002_to_2011 <- final_data_2002_to_2011[c("LA Code", "Age", "Gender", "Year", "Population Estimate")]
 
-colnames(final_data_2012_to_2016) <- c("LA Code", "Age", "Population Estimate", "Gender", "Year")
-final_data_2012_to_2016 <- final_data_2012_to_2016[c("LA Code", "Age", "Gender", "Year", "Population Estimate")]
+colnames(final_data_2012_to_2017) <- c("LA Code", "Age", "Population Estimate", "Gender", "Year")
+final_data_2012_to_2017 <- final_data_2012_to_2017[c("LA Code", "Age", "Gender", "Year", "Population Estimate")]
 
 ##Create the two final csv files to be put on to SQL server. 
 
-write.csv(final_data_2012_to_2016, "~/PopulationEstimates/data/output_data/data_2012_to_2016.csv")
+write.csv(final_data_2012_to_2017, "~/PopulationEstimates/data/output_data/data_2012_to_2017.csv")
 
 write.csv(final_data_2002_to_2011, "~/PopulationEstimates/data/output_data/data_2002_to_2011.csv")
